@@ -32,7 +32,8 @@ public class WikiTest extends BaseTest {
         
         hrefs.forEach(x->links.add(x.getAttribute("href")));
 
-        /** 1 способ: открытия всех полученных ссылок с помощью stream.api
+        /** 
+            1 способ: открытия всех полученных ссылок с помощью stream.api
         links.forEach(Selenide::open);
 
             2 способ: открытие всех ссылок и выполнение каких-либо assert'ов
