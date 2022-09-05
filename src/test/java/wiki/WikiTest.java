@@ -13,18 +13,18 @@ public class WikiTest extends BaseTest {
     private final static String URL = "https://ru.wikipedia.org/wiki/Java";
 
     @Test
-    public void openAllHrefs(){
+    public void openAllHrefs() {
         Selenide.open(URL);
         ElementsCollection hrefs = Selenide.$$x("//div[@id='toc']//a[@href]");
         List<String> links = new ArrayList<>();
         
         /** 
          *     1 method:
-         * for (int i = 0; i<hrefs.size(); i++){
+         * for (int i = 0; i<hrefs.size(); i++) {
          *     links.add(hrefs.get(i).getAttribute("href"));
          * }
          *     2 method:
-         * for(SelenideElement element : hrefs){
+         * for(SelenideElement element : hrefs) {
          *     links.add(element.getAttribute("href"));
          * }
          *     3 method:
@@ -33,11 +33,11 @@ public class WikiTest extends BaseTest {
         hrefs.forEach(x->links.add(x.getAttribute("href")));
 
         /** 
-         *    1 способ: открытия всех полученных ссылок с помощью stream.api
+         *    1 способ: открытиe всех полученных ссылок с помощью stream.api
          * links.forEach(Selenide::open);
          *
          *    2 способ: открытие всех ссылок и выполнение каких-либо assert'ов
-         * for (int i = 0; i<links.size(); i++){
+         * for (int i = 0; i<links.size(); i++) {
          *    String listUrl = links.get(i);
          *    Selenide.open(listUrl);
          *    String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
@@ -54,6 +54,5 @@ public class WikiTest extends BaseTest {
          */
 
         List<Integer> linkLength = hrefs.stream().map(x->x.getAttribute("href").length()).collect(Collectors.toList());
-
     }
 }
