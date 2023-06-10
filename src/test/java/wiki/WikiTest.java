@@ -17,8 +17,8 @@ public class WikiTest extends BaseTest {
         Selenide.open(URL);
         ElementsCollection hrefs = Selenide.$$x("//div[@id='toc']//a[@href]");
         List<String> links = new ArrayList<>();
-        
-        /** 
+
+        /**
          *     1 method:
          * for (int i = 0; i<hrefs.size(); i++) {
          *     links.add(hrefs.get(i).getAttribute("href"));
@@ -29,10 +29,10 @@ public class WikiTest extends BaseTest {
          * }
          *     3 method:
          */
-        
-        hrefs.forEach(x->links.add(x.getAttribute("href")));
 
-        /** 
+        hrefs.forEach(x -> links.add(x.getAttribute("href")));
+
+        /**
          *    1 способ: открытиe всех полученных ссылок с помощью stream.api
          * links.forEach(Selenide::open);
          *
@@ -53,6 +53,6 @@ public class WikiTest extends BaseTest {
          * }
          */
 
-        List<Integer> linkLength = hrefs.stream().map(x->x.getAttribute("href").length()).collect(Collectors.toList());
+        List<Integer> linkLength = hrefs.stream().map(x -> x.getAttribute("href").length()).collect(Collectors.toList());
     }
 }
